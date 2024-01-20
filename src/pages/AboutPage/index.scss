@@ -1,0 +1,38 @@
+.aboutPageWrap{
+    text-align: left;
+    padding: 2rem 1.7rem;
+    .titleWrap{
+        font-weight: 800;
+        font-size: 1.8rem;
+    }
+    .horizontalLine{
+        padding-bottom: 0.7rem;
+        border-bottom: 0.2rem solid grey;
+    }
+    .contentWrap{
+        margin: 2rem 0;
+        font-weight: 500;
+        font-size: 1rem;
+        line-height: 1.7;
+    }
+    .cardsWrap{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin-top: 2rem;
+        .cardWrap{
+            flex: 0 1 calc(19% - 1em);
+            border: 1px solid red;
+            border-radius: 1rem;
+            aspect-ratio: 1;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            .cardImageWrap{
+
+            }
+        }
+    }
+}

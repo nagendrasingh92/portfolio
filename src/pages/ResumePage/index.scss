@@ -1,0 +1,29 @@
+.aboutPageWrap{
+    text-align: left;
+    padding: 2rem 1.7rem;
+    .titleWrap{
+        font-weight: 800;
+        font-size: 1.8rem;
+    }
+    .horizontalLine{
+        padding-bottom: 0.7rem;
+        border-bottom: 0.2rem solid grey;
+    }
+    .section{
+        margin-top: 3rem;
+        .titleWrap{
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+            .iconWrap{
+                border: 1px solid red;
+                padding: 0.6rem;
+                display: inline-flex;
+                align-items: center;
+                border-radius: 0.6rem;
+            }
+        }
+
+    }
+}
