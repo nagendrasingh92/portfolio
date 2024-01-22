@@ -28,7 +28,6 @@ const AboutPage = () => {
                 {
                     iconData.map((item, index) => (
                         <div key={index} className='cardWrap'>
-
                             <span className='cardImageWrap'>
                                 <img src={item} alt={item} />
                             </span>

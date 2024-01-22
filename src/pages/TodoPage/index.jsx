@@ -1,7 +1,7 @@
 // TodoApp.js
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addTodo, updateTodo, deleteTodo } from '../../store/reducers/todoList/todoListsSlice';
+import { addTodo, updateTodo, deleteTodo } from '../../store/reducers/todoLists/todoListsSlice';
 
 const TodoPage = () => {
   const dispatch = useDispatch();
@@ -9,7 +9,6 @@ const TodoPage = () => {
   const [newTask, setNewTask] = useState('');
 
   const handleAddTodo = () => {
-    console.log('hi',todos)
     dispatch(addTodo(newTask));
     setNewTask('');
   };

@@ -13,7 +13,7 @@ const todoListsSlice = createSlice({
             const newTodo = {
                 id: Date.now(),
                 text: action.payload,
-                complete: false, // Corrected property name
+                complete: false,
             };
             state.todos.push(newTodo);
         },

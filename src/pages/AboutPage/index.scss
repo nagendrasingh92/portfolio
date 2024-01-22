@@ -4,11 +4,12 @@
     .titleWrap{
         font-weight: 800;
         font-size: 1.8rem;
+        .horizontalLine{
+            padding-bottom: 0.7rem;
+            border-bottom: 0.2rem solid grey;
+        }
     }
-    .horizontalLine{
-        padding-bottom: 0.7rem;
-        border-bottom: 0.2rem solid grey;
-    }
+    
     .contentWrap{
         margin: 2rem 0;
         font-weight: 500;

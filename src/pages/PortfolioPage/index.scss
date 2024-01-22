@@ -1,0 +1,39 @@
+.portfolioPageWrap {
+    text-align: left;
+    padding: 2rem 1.7rem;
+
+    .titleWrap {
+        font-weight: 800;
+        font-size: 1.8rem;
+        margin-bottom: 4rem;
+
+        .horizontalLine {
+            padding-bottom: 0.7rem;
+            border-bottom: 0.2rem solid grey;
+        }
+    }
+
+    .cardsWrap {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        justify-content: center;
+
+        .cardWrap {
+            flex: 0 1 24%;
+            border: 1px solid red;
+            aspect-ratio: 1;
+            overflow: hidden;
+            border-radius: 0.8rem;
+
+            .imageWrap {
+                width: 100%;
+
+                img {
+                    width: 100%;
+                    height: 10rem;
+                }
+            }
+        }
+    }
+}

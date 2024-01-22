@@ -20,7 +20,68 @@ const iconData = [
     gitIcon,
     reactIcon,
 ]
+const userProfileData = [
+    {
+        id: 1,
+        name: 'admin',
+        username: 'admin123',
+        password: '123456789',
+        email: 'admin123@gmail.com',
+        image: '',
+    },
+    {
+        id: 2,
+        name: 'name',
+        username: 'userName',
+        password: '123456789',
+
+        email: 'Email',
+        image: '',
+    },
+    {
+        id: 3,
+        name: 'name',
+        username: 'userName',
+        password: '123456789',
+
+        email: 'Email',
+        image: '',
+    },
+    {
+        id: 4,
+        name: 'name',
+        username: 'userName',
+        password: '123456789',
+
+        email: 'Email',
+        image: '',
+    },
+    {
+        id: 5,
+        name: 'name',
+        username: 'userName',
+        password: '123456789',
+
+        email: 'Email',
+        image: '',
+    },
+    {
+        id: 6,
+        name: 'name',
+        username: 'userName',
+        password: '123456789',
+
+        email: 'Email',
+        image: '',
+    }
+
+]
+const publicLayoutNavBarData = [
+    'About', 'Resume', 'Portfolio', 'Contact',
+]
 
 export {
+    userProfileData,
     iconData,
+    publicLayoutNavBarData,
 }

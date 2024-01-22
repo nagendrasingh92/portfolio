@@ -5,25 +5,51 @@ import TodoPage from '../pages/TodoPage/index';
 import PublicLayout from "../layout/PublicLayout";
 import AboutPage from "../pages/AboutPage";
 import ResumePage from "../pages/ResumePage";
-
-
+import ContactPage from "../pages/ContactPage";
+import PortfolioPage from '../pages/PortfolioPage';
+import SigninPage from "../pages/SigninPage";
+import SignupPage from '../pages/SignupPage';
+import AdminPortal from "../pages/AdminPortal";
 const routes = createBrowserRouter([
+    {
+        path: ROUTE_PATH.SIGNUP,
+        element:<PublicLayout><SignupPage /></PublicLayout> 
+    },
+    {
+        path: ROUTE_PATH.SIGIN,
+        element:<PublicLayout><SigninPage /></PublicLayout> 
+    },
+    {
+        path: ROUTE_PATH.ADMINPORTAL,
+        element:<PublicLayout><AdminPortal /></PublicLayout> 
+    },
+    
     {
         path: ROUTE_PATH.HOME,
         element:<PublicLayout><Home /></PublicLayout> 
     },
     {
-        path: ROUTE_PATH.TODO_PAGE,
+        path: ROUTE_PATH.TODO,
         element: <TodoPage />
     },
     {
-        path: ROUTE_PATH.ABOUT_PAGE,
+        path: ROUTE_PATH.ABOUT,
         element:<PublicLayout><AboutPage /></PublicLayout> 
 
     },
     {
-        path: ROUTE_PATH.RESUME_PAGE,
+        path: ROUTE_PATH.RESUME,
         element:<PublicLayout><ResumePage /></PublicLayout> 
+
+    },
+    {
+        path: ROUTE_PATH.CONTACT,
+        element:<PublicLayout><ContactPage /></PublicLayout> 
+
+    },
+    {
+        path: ROUTE_PATH.PORTFOLIO,
+        element:<PublicLayout><PortfolioPage /></PublicLayout> 
 
     },
 ])
