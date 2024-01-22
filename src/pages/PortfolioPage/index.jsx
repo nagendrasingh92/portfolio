@@ -1,11 +1,12 @@
 import { useNavigate } from 'react-router-dom';
-import signInImage from '../../assets/images/signIn.png';
-import signUpImage from '../../assets/images/signUp.png';
-import adminPortalImage from '../../assets/images/adminPortal.png';
+import { useSelector } from 'react-redux';
+
+import { portfolioData } from '../../constants/data'; 
 import './index.scss';
 
 const PortfolioPage = () => {
     const navigate = useNavigate();
+    const currentUserData = useSelector((state) => state.currentUserData.currentUserData);
 
     const handleNavigate = (route) => {
         switch (route) {
@@ -15,9 +16,17 @@ const PortfolioPage = () => {
             case 'signUp':
                 navigate('/signup');
                 break;
-            case 'adminPortal':
-                navigate('/admin_portal');
+            case 'adminPortal':{
+                console.log('hi',currentUserData)
+                if(currentUserData[0].id === 1){
+                    navigate('/admin_portal');
+                } else {
+                    navigate('/portfolio');
+                }
+                
                 break;
+            }
+                
             default:
                 break;
         }
@@ -30,66 +39,18 @@ const PortfolioPage = () => {
                 </span>
             </div>
             <div className='cardsWrap'>
-                <div className='cardWrap' onClick={() => handleNavigate('adminPortal')}>
-                    <div className='imageWrap'>
-                    <img src={adminPortalImage} alt="signIn" />
-                    </div>
-                    <div className='nameWrap'>
-                        Admin Portal
-                    </div>
-                </div>
-                <div className='cardWrap' onClick={() => handleNavigate('signIn')}>
-                    <div className='imageWrap'>
-                        <img src={signInImage} alt="signIn" />
-                    </div>
-                    <div className='nameWrap'>
-                        Sigin page
-                    </div>
-                </div>
-                <div className='cardWrap' onClick={() => handleNavigate('signUp')}>
-                    <div className='imageWrap'>
-                        <img src={signUpImage} alt="signUp" />
-
-                    </div>
-                    <div className='nameWrap'>
-                        Signup page
-                    </div>
-                </div>
-                <div className='cardWrap'>
-                    <div className='imageWrap'>
-                    </div>
-                    <div className='nameWrap'>
-                        Calculator
-                    </div>
-                </div>
-                <div className='cardWrap'>
-                    <div className='imageWrap'>
-                    </div>
-                    <div className='nameWrap'>
-                        Number Game
-                    </div>
-                </div>
-                <div className='cardWrap'>
-                    <div className='imageWrap'>
-                    </div>
-                    <div className='nameWrap'>
-                        Todo List
-                    </div>
-                </div>
-                <div className='cardWrap'>
-                    <div className='imageWrap'>
-                    </div>
-                    <div className='nameWrap'>
-                        Weather find
-                    </div>
-                </div>
-                <div className='cardWrap'>
-                    <div className='imageWrap'>
-                    </div>
-                    <div className='nameWrap'>
-                        E-commorse
-                    </div>
-                </div>
+                {portfolioData &&
+                    portfolioData.map((item, index) => (
+                        <div key={index} className='cardWrap' onClick={() => handleNavigate(item.name)}>
+                            <div className='imageWrap'>
+                                <img src={item.icon} alt={item.name} />
+                            </div>
+                            <div className='nameWrap'>
+                                {item.title}
+                            </div>
+                        </div>
+                    ))
+                }
             </div>
 
         </div>

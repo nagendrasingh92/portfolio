@@ -119,7 +119,7 @@ const SigninPage = () => {
                             value={username}
                             onChange={(event) => handleChange(event)}
                             error={tucUsername && !!errUsername}
-                            helper={tucUsername ? errUsername : undefined}
+                            helperText={tucUsername ? errUsername : undefined}
                             InputProps={{
                                 startAdornment: (
                                     <InputAdornment position="start">
@@ -131,8 +131,6 @@ const SigninPage = () => {
                     </div>
                     <div className='inputFieldWrap'>
                         <TextField
-
-                            required
                             fullWidth
                             id="password"
                             label="Password"
@@ -141,7 +139,7 @@ const SigninPage = () => {
                             value={password}
                             onChange={(event) => handleChange(event)}
                             error={tucPassword && !!errPassword}
-                            helper={tucPassword ? errPassword : undefined}
+                            helperText={tucPassword ? errPassword : undefined}
                             InputProps={{
                                 startAdornment: (
                                     <InputAdornment position="start">
@@ -164,7 +162,11 @@ const SigninPage = () => {
                         Sign In
                     </Button>
                 </form>
-
+                <div className='hintWrap'>
+                    Only admin can check admin portal <br/>
+                    for Admin UserName:- admin123, password:- 123456789<br/>
+                    for guest userName:- guest123, passwrod:- 123456789
+                </div>
             </div>
 
         </div>

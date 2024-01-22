@@ -1,6 +1,6 @@
 import { Button, InputAdornment, TextField } from '@mui/material';
 import { useFormik } from 'formik';
-import { validationSignInSchema } from '../../utils/validations/authValidation';
+import { validationSignUpSchema } from '../../utils/validations/authValidation';
 import { useNavigate } from 'react-router';
 import PersonIcon from '@mui/icons-material/Person';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
@@ -8,10 +8,16 @@ import KeyboardIcon from '@mui/icons-material/Keyboard';
 import EmailIcon from '@mui/icons-material/Email';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
+import { useDispatch, useSelector } from 'react-redux';
+
 import './index.scss';
+import { addUser } from '../../store/reducers/adminPortal/adminPortalSlice';
 
 
 const SignupPage = () => {
+    const dispatch = useDispatch();
+    const userData = useSelector((state) => state.userData.userData);
+
     const navigate = useNavigate();
 
     const handleNavigate = (route) => {
@@ -25,39 +31,52 @@ const SignupPage = () => {
     }
 
 
-    const submitHandler = async (values) => {
-        await new Promise((resolve) => setTimeout(resolve, 500));
+    const submitHandler = (values) => {
         alert(JSON.stringify(values, null, 2));
+        if(values){
+            const isUserExists = userData.some(user => user.email === values.email)
+            if(isUserExists){
+                alert('email already exist.')
+            } else{
+                const newUserTemp = [...userData, {...values, id: Date.now()}]
+                dispatch(addUser(newUserTemp));
+                alert('User added successfully!');
+            }
+            
+        }
     }
     const formik = useFormik({
         initialValues: {
+            fullName: '',
             email: '',
             username: '',
             password: '',
             confirmPassword: ''
         },
-        validationSchema: validationSignInSchema,
+        validationSchema: validationSignUpSchema,
         onSubmit: submitHandler,
     });
 
     const {
         handleSubmit,
-        values: { username, password, email, confirmPassword } = {},
+        values: { fullName, username, password, email, confirmPassword } = {},
         touched: {
+            fullName: tucFullName = false,
             email: tucEmail = false,
             username: tucUsername = false,
             password: tucPassword = false,
             confirmPassword: tucConfirmPassword = false
         } = {},
         errors: {
+            fullName: errFullName,
             email: errEmail,
             username: errUsername,
             password: errPassword,
-            confirmpassword: errConfirmPassword
+            confirmPassword: errConfirmPassword
 
         } = {},
     } = formik;
-
+console.log('err',errConfirmPassword )
     const handleChange = (event) => {
         formik.setFieldValue(event.target.name, event.target.value.trim())
     }
@@ -103,6 +122,28 @@ const SignupPage = () => {
                     </span>
                 </div>
                 <form className='signinFormContent' onSubmit={handleSubmit} autoComplete="off">
+                <div className='inputFieldWrap'>
+                        <TextField
+                            
+                            fullWidth
+                            id="fullName"
+                            label="Name"
+                            name="fullName"
+                            value={fullName}
+                            onChange={(event) => handleChange(event)}
+                            error={tucFullName && !!errFullName}
+                            helperText={tucFullName ? errFullName : undefined}
+                            InputProps={{
+                                startAdornment: (
+                                    <InputAdornment position="start">
+                                        <EmailIcon />
+                                    </InputAdornment>
+                                ),
+                            }}
+                            
+                        />
+                    </div>
+                    
                     <div className='inputFieldWrap'>
                         <TextField
                             
@@ -113,7 +154,7 @@ const SignupPage = () => {
                             value={email}
                             onChange={(event) => handleChange(event)}
                             error={tucEmail && !!errEmail}
-                            helper={tucEmail ? errEmail : undefined}
+                            helperText={tucEmail ? errEmail : undefined}
                             InputProps={{
                                 startAdornment: (
                                     <InputAdornment position="start">
@@ -127,7 +168,7 @@ const SignupPage = () => {
 
                     <div className='inputFieldWrap'>
                         <TextField
-                            required
+                            
                             fullWidth
                             id="username"
                             label="Username"
@@ -135,7 +176,7 @@ const SignupPage = () => {
                             value={username}
                             onChange={(event) => handleChange(event)}
                             error={tucUsername && !!errUsername}
-                            helper={tucUsername ? errUsername : undefined}
+                            helperText={tucUsername ? errUsername : undefined}
                             InputProps={{
                                 startAdornment: (
                                     <InputAdornment position="start">
@@ -147,7 +188,7 @@ const SignupPage = () => {
                     </div>
                     <div className='inputFieldWrap'>
                         <TextField
-                            required
+                            
                             fullWidth
                             id="password"
                             label="Password"
@@ -156,7 +197,7 @@ const SignupPage = () => {
                             value={password}
                             onChange={(event) => handleChange(event)}
                             error={tucPassword && !!errPassword}
-                            helper={tucPassword ? errPassword : undefined}
+                            helperText={tucPassword ? errPassword : undefined}
                             InputProps={{
                                 
                                 startAdornment: (
@@ -169,7 +210,7 @@ const SignupPage = () => {
                     </div>
                     <div className='inputFieldWrap'>
                         <TextField
-                            required
+                            
                             fullWidth
                             id="confirmPassword"
                             label="Confirm Password"
@@ -178,7 +219,7 @@ const SignupPage = () => {
                             value={confirmPassword}
                             onChange={(event) => handleChange(event)}
                             error={tucConfirmPassword && !!errConfirmPassword}
-                            helper={tucConfirmPassword ? errPassword : undefined}
+                            helperText={tucConfirmPassword ? errConfirmPassword : undefined}
                             InputProps={{
                                 startAdornment: (
                                     <InputAdornment position="start">

@@ -7,7 +7,10 @@ import jsIcon from '../assets/svg/jsIcon.svg';
 import reactIcon from '../assets/svg/reactIcon.svg';
 import sassIcon from '../assets/svg/sassIcon.svg';
 import vsCodeIcon from '../assets/svg/vsCodeIcon.svg';
-
+import signInImage from '../assets/images/signIn.png';
+import signUpImage from '../assets/images/signUp.png';
+import adminPortalImage from '../assets/images/adminPortal.png';
+import underConstruction from '../assets/images/underConstruction.jpg';
 
 const iconData = [
     vsCodeIcon,
@@ -23,7 +26,7 @@ const iconData = [
 const userProfileData = [
     {
         id: 1,
-        name: 'admin',
+        fullName: 'admin',
         username: 'admin123',
         password: '123456789',
         email: 'admin123@gmail.com',
@@ -31,56 +34,96 @@ const userProfileData = [
     },
     {
         id: 2,
-        name: 'name',
-        username: 'userName',
+        fullName: 'guest',
+        username: 'guest123',
         password: '123456789',
 
-        email: 'Email',
+        email: 'guest123@g.com',
         image: '',
     },
     {
         id: 3,
-        name: 'name',
-        username: 'userName',
+        fullName: 'test1',
+        username: 'test123',
         password: '123456789',
-
-        email: 'Email',
+        email: 'test123@g.com',
         image: '',
     },
     {
         id: 4,
-        name: 'name',
-        username: 'userName',
+        fullName: 'test2',
+        username: 'test223',
         password: '123456789',
-
-        email: 'Email',
+        email: 'test223@g.com',
         image: '',
     },
     {
         id: 5,
-        name: 'name',
-        username: 'userName',
+        fullName: 'test3',
+        username: 'test323',
         password: '123456789',
-
-        email: 'Email',
+        email: 'test323@g.com',
         image: '',
     },
     {
         id: 6,
-        name: 'name',
-        username: 'userName',
+        fullName: 'test4',
+        username: 'test423',
         password: '123456789',
-
-        email: 'Email',
+        email: 'test423@g.com',
         image: '',
-    }
+    },
 
 ]
 const publicLayoutNavBarData = [
     'About', 'Resume', 'Portfolio', 'Contact',
 ]
 
+const portfolioData = [
+    {
+        name: 'adminPortal',
+        icon: adminPortalImage,
+        title: 'Admin Portal'
+    },
+    {
+        name: 'signIn',
+        icon: signInImage,
+        title: 'Sigin page'
+    },
+    {
+        name: 'signUp',
+        icon: signUpImage,
+        title: 'Signup page'
+    },
+    {
+        name: '',
+        icon: underConstruction,
+        title: 'Calculator'
+    },
+    {
+        name: '',
+        icon: underConstruction,
+        title: 'Number Game'
+    },
+    {
+        name: '',
+        icon: underConstruction,
+        title: 'Todo List'
+    },
+    {
+        name: '',
+        icon: underConstruction,
+        title: 'Weather find'
+    },
+    {
+        name: '',
+        icon: underConstruction,
+        title: 'E-commorse'
+    },
+]
+
 export {
+    portfolioData,
     userProfileData,
     iconData,
     publicLayoutNavBarData,

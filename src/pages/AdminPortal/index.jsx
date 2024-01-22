@@ -79,7 +79,7 @@ const AdminPortal = () => {
                                 </div>
                                 <div className='userDatilsWrap'>
                                     <div className='nameWrap'>
-                                        Name:- {item.name}
+                                        Name:- {item.fullName}
                                     </div>
                                     <div className='usernameWrap'>
                                         UserName:- {item.username}
