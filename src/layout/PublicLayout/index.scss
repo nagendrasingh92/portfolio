@@ -4,7 +4,22 @@
     display: flex;
     gap: 2rem;
     position: relative;
-    
+    .modeChangeWrap{
+        position: absolute;
+        border-radius: 60%;
+        height: 2rem;
+        width: 2rem;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        right: 0.5rem;
+        top: 0.5rem;
+        img{
+            height: 4rem;
+            border-radius: 50%;
+        }
+    }
     .sideBarWrap {
         position: sticky;
         top: 0;

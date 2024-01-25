@@ -1,23 +1,20 @@
-import { Button, InputAdornment, TextField } from '@mui/material';
 import { useFormik } from 'formik';
-import { validationSignInSchema } from '../../utils/validations/authValidation';
 import { useNavigate } from 'react-router';
+import { Button, InputAdornment, TextField } from '@mui/material';
 import PersonIcon from '@mui/icons-material/Person';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import KeyIcon from '@mui/icons-material/Key';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import KeyboardIcon from '@mui/icons-material/Keyboard';
 import { useDispatch, useSelector } from 'react-redux';
-
-import './index.scss';
 import { currentUser } from '../../store/reducers/signIn/signInSlice';
+import { validationSignInSchema } from '../../utils/validations/authValidation';
+import './index.scss';
 
 const SigninPage = () => {
     const dispatch = useDispatch();
     const userData = useSelector((state) => state.userData.userData);
-
     const navigate = useNavigate();
-
     const handleNavigate = (route) => {
         switch (route) {
             case 'signUp':
@@ -27,13 +24,9 @@ const SigninPage = () => {
                 break;
         }
     }
-
     const submitHandler = async (values) => {
-        console.log('values', values)
         //await new Promise((resolve) => setTimeout(resolve, 500));
-        console.log('userdataS', userData[0].password)
         //alert(JSON.stringify(values, null, 2));
-
         const currentUserTemp = userData.filter((item) =>
             item.username === values.username && item.password === values.password
         )
@@ -41,10 +34,11 @@ const SigninPage = () => {
             alert('No user exist please signup')
         } else {
             dispatch(currentUser(currentUserTemp))
+            localStorage.setItem('auth', JSON.stringify(currentUserTemp))
             navigate('/');
+
         }
     }
-
     const formik = useFormik({
         initialValues: {
             username: '',
@@ -53,7 +47,6 @@ const SigninPage = () => {
         validationSchema: validationSignInSchema,
         onSubmit: submitHandler,
     });
-
     const {
         handleSubmit,
         values: { username, password } = {},
@@ -69,7 +62,6 @@ const SigninPage = () => {
     const handleChange = (event) => {
         formik.setFieldValue(event.target.name, event.target.value.trim())
     }
-
     return (
         <div className="signinPageWrap">
             <div className="titleWrap">
@@ -87,7 +79,6 @@ const SigninPage = () => {
                             sx={{
                                 borderRadius: '0.6rem',
                                 padding: '1rem',
-
                             }}
                         >
                             Sign In
@@ -163,12 +154,11 @@ const SigninPage = () => {
                     </Button>
                 </form>
                 <div className='hintWrap'>
-                    Only admin can check admin portal <br/>
-                    for Admin UserName:- admin123, password:- 123456789<br/>
+                    Only admin can check admin portal <br />
+                    for Admin UserName:- admin123, password:- 123456789<br />
                     for guest userName:- guest123, passwrod:- 123456789
                 </div>
             </div>
-
         </div>
     )
 }

@@ -18,6 +18,26 @@ export const theme = createTheme({
       otherFirst: '#DE350B',
       otherSecond: '#F4F6FA'
     },
+    lightTheme: {
+      bdBody: 'rgb(227, 244, 244)',
+      bdSideBarPrimary: 'rgb(32 32 34)',
+      bdSideBarSecondary: 'rgb(30 30 31)',
+      colorTextPrimary: 'rgb(255 255 255)',
+      colorTextSecondary: 'reb(250 250 250)',
+      colorTextTertiary: 'rgb(214 214 214 / 70%)',
+      highLightTextPrimary: 'rgb(255 219 112)',
+      highLightTextSecondary: 'rgb(206 177 90)',
+    },
+    DarkTheme:{
+      bdBody: 'rgb(18 18 18)',
+      bdSideBarPrimary: 'rgb(32 32 34)',
+      bdSideBarSecondary: 'rgb(30 30 31)',
+      colorTextPrimary: 'rgb(255 255 255)',
+      colorTextSecondary: 'reb(250 250 250)',
+      colorTextTertiary: 'rgb(214 214 214 / 70%)',
+      highLightTextPrimary: 'rgb(255 219 112)',
+      highLightTextSecondary: 'rgb(206 177 90)',
+    },
     boxShadow: {
       main: '0px 7px 10px rgba(40, 41, 61, 0.08)',
     },

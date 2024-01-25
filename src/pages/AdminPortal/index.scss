@@ -16,8 +16,7 @@
         border-radius: 1rem;
         .addUserButtonWrap{
             text-align: right;
-            margin:1rem 2rem 0rem 0rem;
-            
+            margin:1rem 2rem 0rem 0rem; 
         }
         .searchBoxWrap{
             margin: 2rem 4rem;
@@ -38,8 +37,6 @@
                     display: flex;
                     justify-content: space-between;
                     background:#007aff ;
-                    .deleteIconWrap{
-                    }
                     .previewIconWrap{
                         margin: 0.3rem
                     }
@@ -54,12 +51,6 @@
                 .userDatilsWrap{
                     text-align: left;
                     padding: 1rem;
-                    .nameWrap{
-
-                    }
-                    .emailWrap{
-
-                    }
                 }
                 .editButtonWrap{
                     background-color: rgb(29, 150, 29);

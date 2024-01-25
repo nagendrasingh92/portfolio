@@ -1,13 +1,11 @@
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-
-import { portfolioData } from '../../constants/data'; 
+import { portfolioData } from '../../constants/data';
 import './index.scss';
 
 const PortfolioPage = () => {
     const navigate = useNavigate();
     const currentUserData = useSelector((state) => state.currentUserData.currentUserData);
-
     const handleNavigate = (route) => {
         switch (route) {
             case 'signIn':
@@ -16,17 +14,14 @@ const PortfolioPage = () => {
             case 'signUp':
                 navigate('/signup');
                 break;
-            case 'adminPortal':{
-                console.log('hi',currentUserData)
-                if(currentUserData[0].id === 1){
+            case 'adminPortal': {
+                if (currentUserData[0].id === 1) {
                     navigate('/admin_portal');
                 } else {
                     navigate('/portfolio');
                 }
-                
                 break;
             }
-                
             default:
                 break;
         }
@@ -52,7 +47,6 @@ const PortfolioPage = () => {
                     ))
                 }
             </div>
-
         </div>
     )
 }

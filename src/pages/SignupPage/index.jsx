@@ -1,7 +1,6 @@
-import { Button, InputAdornment, TextField } from '@mui/material';
 import { useFormik } from 'formik';
-import { validationSignUpSchema } from '../../utils/validations/authValidation';
 import { useNavigate } from 'react-router';
+import { Button, InputAdornment, TextField } from '@mui/material';
 import PersonIcon from '@mui/icons-material/Person';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import KeyboardIcon from '@mui/icons-material/Keyboard';
@@ -9,17 +8,14 @@ import EmailIcon from '@mui/icons-material/Email';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
 import { useDispatch, useSelector } from 'react-redux';
-
-import './index.scss';
 import { addUser } from '../../store/reducers/adminPortal/adminPortalSlice';
-
+import { validationSignUpSchema } from '../../utils/validations/authValidation';
+import './index.scss';
 
 const SignupPage = () => {
     const dispatch = useDispatch();
     const userData = useSelector((state) => state.userData.userData);
-
     const navigate = useNavigate();
-
     const handleNavigate = (route) => {
         switch (route) {
             case 'signIn':
@@ -29,20 +25,17 @@ const SignupPage = () => {
                 break;
         }
     }
-
-
     const submitHandler = (values) => {
         alert(JSON.stringify(values, null, 2));
-        if(values){
+        if (values) {
             const isUserExists = userData.some(user => user.email === values.email)
-            if(isUserExists){
+            if (isUserExists) {
                 alert('email already exist.')
-            } else{
-                const newUserTemp = [...userData, {...values, id: Date.now()}]
+            } else {
+                const newUserTemp = [...userData, { ...values, id: Date.now() }]
                 dispatch(addUser(newUserTemp));
                 alert('User added successfully!');
             }
-            
         }
     }
     const formik = useFormik({
@@ -56,7 +49,6 @@ const SignupPage = () => {
         validationSchema: validationSignUpSchema,
         onSubmit: submitHandler,
     });
-
     const {
         handleSubmit,
         values: { fullName, username, password, email, confirmPassword } = {},
@@ -76,19 +68,17 @@ const SignupPage = () => {
 
         } = {},
     } = formik;
-console.log('err',errConfirmPassword )
     const handleChange = (event) => {
         formik.setFieldValue(event.target.name, event.target.value.trim())
     }
-
     return (
-        <div className="signinPageWrap">
+        <div className="signupPageWrap">
             <div className="titleWrap">
                 <span className='horizontalLine'>
                     Sign Up
                 </span>
             </div>
-            <div className='signinPageContentWrap'>
+            <div className='signupPageContentWrap'>
                 <div className='headerButtonWrap'>
                     <span className='buttonWrap'>
                         <Button
@@ -99,7 +89,6 @@ console.log('err',errConfirmPassword )
                                 borderRadius: '0.6rem',
                                 padding: '1rem',
                                 border: '1px solid grey',
-
                             }}
                             onClick={() => handleNavigate('signIn')}
                         >
@@ -121,10 +110,9 @@ console.log('err',errConfirmPassword )
                         </Button>
                     </span>
                 </div>
-                <form className='signinFormContent' onSubmit={handleSubmit} autoComplete="off">
-                <div className='inputFieldWrap'>
+                <form className='signupFormContent' onSubmit={handleSubmit} autoComplete="off">
+                    <div className='inputFieldWrap'>
                         <TextField
-                            
                             fullWidth
                             id="fullName"
                             label="Name"
@@ -140,13 +128,10 @@ console.log('err',errConfirmPassword )
                                     </InputAdornment>
                                 ),
                             }}
-                            
                         />
                     </div>
-                    
                     <div className='inputFieldWrap'>
                         <TextField
-                            
                             fullWidth
                             id="email"
                             label="Email"
@@ -162,13 +147,10 @@ console.log('err',errConfirmPassword )
                                     </InputAdornment>
                                 ),
                             }}
-                            
                         />
                     </div>
-
                     <div className='inputFieldWrap'>
                         <TextField
-                            
                             fullWidth
                             id="username"
                             label="Username"
@@ -188,7 +170,6 @@ console.log('err',errConfirmPassword )
                     </div>
                     <div className='inputFieldWrap'>
                         <TextField
-                            
                             fullWidth
                             id="password"
                             label="Password"
@@ -199,7 +180,6 @@ console.log('err',errConfirmPassword )
                             error={tucPassword && !!errPassword}
                             helperText={tucPassword ? errPassword : undefined}
                             InputProps={{
-                                
                                 startAdornment: (
                                     <InputAdornment position="start">
                                         <KeyboardIcon />
@@ -210,7 +190,6 @@ console.log('err',errConfirmPassword )
                     </div>
                     <div className='inputFieldWrap'>
                         <TextField
-                            
                             fullWidth
                             id="confirmPassword"
                             label="Confirm Password"
@@ -227,7 +206,6 @@ console.log('err',errConfirmPassword )
                                     </InputAdornment>
                                 ),
                             }}
-                            
                         />
                     </div>
                     <Button
@@ -243,9 +221,7 @@ console.log('err',errConfirmPassword )
                         Sign Up
                     </Button>
                 </form>
-
             </div>
-
         </div>
     )
 }

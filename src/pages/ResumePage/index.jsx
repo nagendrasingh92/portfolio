@@ -3,9 +3,6 @@ import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import './index.scss';
 import { Button } from '@mui/material';
 const ResumePage = () => {
-    // const handleDownloadPdf = () => {
-
-    // }
     return (
         <div className="resumePageWrap">
             <div className="titleWrap">
@@ -13,7 +10,6 @@ const ResumePage = () => {
                     Resume
                 </span>
             </div>
-
             <div className='section'>
                 <div className='titleGroupWrap'>
                     <span className='iconWrap'>
@@ -31,7 +27,6 @@ const ResumePage = () => {
                         2023 - Present
                     </div>
                     <div className='descriptionWrap'>
-
                     </div>
                 </div>
                 <div className='sectionDetailsWrap'>
@@ -42,7 +37,6 @@ const ResumePage = () => {
                         2022 - 2023
                     </div>
                     <div className='descriptionWrap'>
-
                     </div>
                 </div>
                 <div className='sectionDetailsWrap'>
@@ -53,10 +47,8 @@ const ResumePage = () => {
                         2020 - 2022
                     </div>
                     <div className='descriptionWrap'>
-
                     </div>
                 </div>
-
             </div>
             <div className='section'>
                 <div className='titleGroupWrap'>
@@ -75,7 +67,6 @@ const ResumePage = () => {
                         2010 - 2014
                     </div>
                     <div className='descriptionWrap'>
-
                     </div>
                 </div>
                 <div className='sectionDetailsWrap'>
@@ -86,7 +77,6 @@ const ResumePage = () => {
                         2009 - 2010
                     </div>
                     <div className='descriptionWrap'>
-
                     </div>
                 </div>
                 <div className='sectionDetailsWrap'>
@@ -97,10 +87,8 @@ const ResumePage = () => {
                         2007 - 2008
                     </div>
                     <div className='descriptionWrap'>
-
                     </div>
                 </div>
-
             </div>
             <div className='downloadButtonWrap'>
                 <a
@@ -123,7 +111,6 @@ const ResumePage = () => {
                     </Button>
                 </a>
             </div>
-
         </div>
     )
 }

@@ -6,20 +6,15 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import EditIcon from '@mui/icons-material/Edit';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
 // import {userProfileData} from '../../constants/data';
 import { deleteUser } from '../../store/reducers/adminPortal/adminPortalSlice';
-
 import './index.scss';
-
 
 const AdminPortal = () => {
     const dispatch = useDispatch();
     const userData = useSelector((state) => state.userData.userData);
     const [filterData, setFilterData] = useState(userData);
     const [searchData, setSearchData] = useState('')
-
-    console.log('userData', userData)
     const handleDelete = (index) => {
         const adminUserDataTemp = userData.filter((item, indexTemp) => index !== indexTemp)
         dispatch(deleteUser(adminUserDataTemp));
@@ -28,9 +23,9 @@ const AdminPortal = () => {
     }
     const handleFilter = (event) => {
         if (event) {
-            const searchTerm = event.target.value;
+            let searchTerm = event.target.value;
             setSearchData(searchTerm)
-            const filterDataTemp = userData.filter((item) => item.name.includes(searchTerm));
+            const filterDataTemp = userData.filter((item) => item.fullName.includes(searchTerm));
             setFilterData(filterDataTemp);
         }
     }
@@ -97,9 +92,7 @@ const AdminPortal = () => {
                             </div>
                         ))
                     }
-
                 </div>
-
             </div>
         </div>
     )

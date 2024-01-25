@@ -5,13 +5,12 @@
     .titleWrap {
         font-weight: 800;
         font-size: 1.8rem;
+
         .horizontalLine {
             padding-bottom: 0.7rem;
             border-bottom: 0.2rem solid grey;
         }
     }
-
-    
 
     .section {
         margin-top: 3rem;
@@ -42,12 +41,14 @@
             margin-left: 4.3rem;
             position: relative;
             margin-bottom: 1.5rem;
+
             .titleWrap {
                 position: relative;
                 font-weight: 700;
                 font-size: 1.2rem;
             }
-            .titleWrap::before{
+
+            .titleWrap::before {
                 position: absolute;
                 content: "";
                 top: 0.2rem;
@@ -64,7 +65,6 @@
                 font-size: 1.1rem;
             }
 
-
             &:not(:last-child)::before {
                 content: "";
                 position: absolute;
@@ -75,11 +75,9 @@
                 background: black;
             }
         }
-
-
-
     }
-    .downloadButtonWrap{
+
+    .downloadButtonWrap {
         text-align: right;
     }
 }
