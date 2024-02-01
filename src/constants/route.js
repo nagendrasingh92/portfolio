@@ -8,7 +8,8 @@ const ROUTE_PATH = {
   SIGIN: '/signin',
   SIGNUP: '/signup',
   PORTFOLIO: '/portfolio',
-  ADMINPORTAL: '/admin_portal'
+  ADMINPORTAL: '/admin_portal',
+  TODOLIST: '/todo_list'
 };
 
 // const API_PATH = {

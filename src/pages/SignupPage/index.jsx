@@ -7,10 +7,13 @@ import KeyboardIcon from '@mui/icons-material/Keyboard';
 import EmailIcon from '@mui/icons-material/Email';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
+import { createUserWithEmailAndPassword } from '@firebase/auth';
 import { useDispatch, useSelector } from 'react-redux';
 import { addUser } from '../../store/reducers/adminPortal/adminPortalSlice';
 import { validationSignUpSchema } from '../../utils/validations/authValidation';
+import { auth } from '../../firebase-config';
 import './index.scss';
+import StyledSignupPage from './StyledSignupPage';
 
 const SignupPage = () => {
     const dispatch = useDispatch();
@@ -34,8 +37,22 @@ const SignupPage = () => {
             } else {
                 const newUserTemp = [...userData, { ...values, id: Date.now() }]
                 dispatch(addUser(newUserTemp));
+                console.log('signupValues', values)
+                register(values.email, values.password);
                 alert('User added successfully!');
             }
+        }
+    }
+    const register = async (email, password) => {
+        try {
+            const user = await createUserWithEmailAndPassword(
+                auth,
+                email,
+                password
+            );
+            console.log(user)
+        } catch (error) {
+            console.log(error.message);
         }
     }
     const formik = useFormik({
@@ -72,157 +89,159 @@ const SignupPage = () => {
         formik.setFieldValue(event.target.name, event.target.value.trim())
     }
     return (
-        <div className="signupPageWrap">
-            <div className="titleWrap">
-                <span className='horizontalLine'>
-                    Sign Up
-                </span>
-            </div>
-            <div className='signupPageContentWrap'>
-                <div className='headerButtonWrap'>
-                    <span className='buttonWrap'>
-                        <Button
-                            fullWidth
-                            variant='standard'
-                            startIcon={<PersonIcon />}
-                            sx={{
-                                borderRadius: '0.6rem',
-                                padding: '1rem',
-                                border: '1px solid grey',
-                            }}
-                            onClick={() => handleNavigate('signIn')}
-                        >
-                            Sign In
-                        </Button>
-                    </span>
-                    <span className='buttonWrap'>
-                        <Button
-                            fullWidth
-                            variant='contained'
-                            startIcon={<PersonAddIcon />}
-                            sx={{
-                                borderRadius: '0.6rem',
-                                border: '1px solid grey',
-                                padding: '1rem',
-                            }}
-                        >
-                            Sign up
-                        </Button>
+        <StyledSignupPage>
+            <div className="signupPageWrap">
+                <div className="titleWrap">
+                    <span className='horizontalLine'>
+                        Sign Up
                     </span>
                 </div>
-                <form className='signupFormContent' onSubmit={handleSubmit} autoComplete="off">
-                    <div className='inputFieldWrap'>
-                        <TextField
-                            fullWidth
-                            id="fullName"
-                            label="Name"
-                            name="fullName"
-                            value={fullName}
-                            onChange={(event) => handleChange(event)}
-                            error={tucFullName && !!errFullName}
-                            helperText={tucFullName ? errFullName : undefined}
-                            InputProps={{
-                                startAdornment: (
-                                    <InputAdornment position="start">
-                                        <EmailIcon />
-                                    </InputAdornment>
-                                ),
-                            }}
-                        />
+                <div className='signupPageContentWrap'>
+                    <div className='headerButtonWrap'>
+                        <span className='buttonWrap'>
+                            <Button
+                                fullWidth
+                                variant='standard'
+                                startIcon={<PersonIcon />}
+                                sx={{
+                                    borderRadius: '0.6rem',
+                                    padding: '1rem',
+                                    border: '1px solid grey',
+                                }}
+                                onClick={() => handleNavigate('signIn')}
+                            >
+                                Sign In
+                            </Button>
+                        </span>
+                        <span className='buttonWrap'>
+                            <Button
+                                fullWidth
+                                variant='contained'
+                                startIcon={<PersonAddIcon />}
+                                sx={{
+                                    borderRadius: '0.6rem',
+                                    border: '1px solid grey',
+                                    padding: '1rem',
+                                }}
+                            >
+                                Sign up
+                            </Button>
+                        </span>
                     </div>
-                    <div className='inputFieldWrap'>
-                        <TextField
+                    <form className='signupFormContent' onSubmit={handleSubmit} autoComplete="off">
+                        <div className='inputFieldWrap'>
+                            <TextField
+                                fullWidth
+                                id="fullName"
+                                label="Name"
+                                name="fullName"
+                                value={fullName}
+                                onChange={(event) => handleChange(event)}
+                                error={tucFullName && !!errFullName}
+                                helperText={tucFullName ? errFullName : undefined}
+                                InputProps={{
+                                    startAdornment: (
+                                        <InputAdornment position="start">
+                                            <EmailIcon />
+                                        </InputAdornment>
+                                    ),
+                                }}
+                            />
+                        </div>
+                        <div className='inputFieldWrap'>
+                            <TextField
+                                fullWidth
+                                id="email"
+                                label="Email"
+                                name="email"
+                                value={email}
+                                onChange={(event) => handleChange(event)}
+                                error={tucEmail && !!errEmail}
+                                helperText={tucEmail ? errEmail : undefined}
+                                InputProps={{
+                                    startAdornment: (
+                                        <InputAdornment position="start">
+                                            <EmailIcon />
+                                        </InputAdornment>
+                                    ),
+                                }}
+                            />
+                        </div>
+                        <div className='inputFieldWrap'>
+                            <TextField
+                                fullWidth
+                                id="username"
+                                label="Username"
+                                name="username"
+                                value={username}
+                                onChange={(event) => handleChange(event)}
+                                error={tucUsername && !!errUsername}
+                                helperText={tucUsername ? errUsername : undefined}
+                                InputProps={{
+                                    startAdornment: (
+                                        <InputAdornment position="start">
+                                            <AccountCircleIcon />
+                                        </InputAdornment>
+                                    ),
+                                }}
+                            />
+                        </div>
+                        <div className='inputFieldWrap'>
+                            <TextField
+                                fullWidth
+                                id="password"
+                                label="Password"
+                                name="password"
+                                type="password"
+                                value={password}
+                                onChange={(event) => handleChange(event)}
+                                error={tucPassword && !!errPassword}
+                                helperText={tucPassword ? errPassword : undefined}
+                                InputProps={{
+                                    startAdornment: (
+                                        <InputAdornment position="start">
+                                            <KeyboardIcon />
+                                        </InputAdornment>
+                                    ),
+                                }}
+                            />
+                        </div>
+                        <div className='inputFieldWrap'>
+                            <TextField
+                                fullWidth
+                                id="confirmPassword"
+                                label="Confirm Password"
+                                name="confirmPassword"
+                                type="password"
+                                value={confirmPassword}
+                                onChange={(event) => handleChange(event)}
+                                error={tucConfirmPassword && !!errConfirmPassword}
+                                helperText={tucConfirmPassword ? errConfirmPassword : undefined}
+                                InputProps={{
+                                    startAdornment: (
+                                        <InputAdornment position="start">
+                                            <CheckBoxIcon />
+                                        </InputAdornment>
+                                    ),
+                                }}
+                            />
+                        </div>
+                        <Button
+                            startIcon={<PersonAddIcon />}
+                            type='submit'
+                            variant='contained'
                             fullWidth
-                            id="email"
-                            label="Email"
-                            name="email"
-                            value={email}
-                            onChange={(event) => handleChange(event)}
-                            error={tucEmail && !!errEmail}
-                            helperText={tucEmail ? errEmail : undefined}
-                            InputProps={{
-                                startAdornment: (
-                                    <InputAdornment position="start">
-                                        <EmailIcon />
-                                    </InputAdornment>
-                                ),
+                            sx={{
+                                padding: '1rem',
+                                borderRadius: '0.5rem',
                             }}
-                        />
-                    </div>
-                    <div className='inputFieldWrap'>
-                        <TextField
-                            fullWidth
-                            id="username"
-                            label="Username"
-                            name="username"
-                            value={username}
-                            onChange={(event) => handleChange(event)}
-                            error={tucUsername && !!errUsername}
-                            helperText={tucUsername ? errUsername : undefined}
-                            InputProps={{
-                                startAdornment: (
-                                    <InputAdornment position="start">
-                                        <AccountCircleIcon />
-                                    </InputAdornment>
-                                ),
-                            }}
-                        />
-                    </div>
-                    <div className='inputFieldWrap'>
-                        <TextField
-                            fullWidth
-                            id="password"
-                            label="Password"
-                            name="password"
-                            type="password"
-                            value={password}
-                            onChange={(event) => handleChange(event)}
-                            error={tucPassword && !!errPassword}
-                            helperText={tucPassword ? errPassword : undefined}
-                            InputProps={{
-                                startAdornment: (
-                                    <InputAdornment position="start">
-                                        <KeyboardIcon />
-                                    </InputAdornment>
-                                ),
-                            }}
-                        />
-                    </div>
-                    <div className='inputFieldWrap'>
-                        <TextField
-                            fullWidth
-                            id="confirmPassword"
-                            label="Confirm Password"
-                            name="confirmPassword"
-                            type="password"
-                            value={confirmPassword}
-                            onChange={(event) => handleChange(event)}
-                            error={tucConfirmPassword && !!errConfirmPassword}
-                            helperText={tucConfirmPassword ? errConfirmPassword : undefined}
-                            InputProps={{
-                                startAdornment: (
-                                    <InputAdornment position="start">
-                                        <CheckBoxIcon />
-                                    </InputAdornment>
-                                ),
-                            }}
-                        />
-                    </div>
-                    <Button
-                        startIcon={<PersonAddIcon />}
-                        type='submit'
-                        variant='contained'
-                        fullWidth
-                        sx={{
-                            padding: '1rem',
-                            borderRadius: '0.5rem',
-                        }}
-                    >
-                        Sign Up
-                    </Button>
-                </form>
+                        >
+                            Sign Up
+                        </Button>
+                    </form>
+                </div>
             </div>
-        </div>
+        </StyledSignupPage>
     )
 }
 

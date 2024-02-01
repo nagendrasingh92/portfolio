@@ -2,16 +2,20 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import { useFormik } from 'formik';
 import { validationContactSchema } from '../../utils/validations/authValidation';
-import './index.scss';
-
+import { doc, setDoc } from '@firebase/firestore';
+import { db } from '../../firebase-config';
+import StyledContactPage from './StyledContactPage';
 const ContactPage = () => {
-
     const submitHandler = async (values) => {
-        event.preventDefault();
+        values.preventDefault();
         const { guestName, email, message } = values;
-        console.log('values', values);
+        await setDoc(doc(db, "cities", "LA"), {
+            name: "Los Angles",
+            state: "CA",
+            country: "USA"
+        });
         const res = fetch(
-            "https://portfolio-55489-default-rtdb.firebaseio.com/userData.json",
+            `${process.env.REACT_APP_FIREBASE}/userData.json`,
             {
                 method: "POST",
                 headers: {
@@ -59,76 +63,77 @@ const ContactPage = () => {
         formik.setFieldValue(event.target.name, event.target.value.trim())
     }
     return (
-        <div className="contactPageWrap">
-            <div className="titleWrap">
-                <span className='horizontalLine'>
-                    Contact
-                </span>
-            </div>
-            <form className='signinFormContent' onSubmit={handleSubmit} autoComplete='off'>
-                <div className='contactFormWrap'>
-                    <div className='inputFiledWrap'>
-                        <span className='nameWrap'>
+        <StyledContactPage>
+            <div className="contactPageWrap">
+                <div className="titleWrap">
+                    <span className='horizontalLine'>
+                        Contact
+                    </span>
+                </div>
+                <form className='signinFormContent' onSubmit={handleSubmit} autoComplete='off'>
+                    <div className='contactFormWrap'>
+                        <div className='inputFiledWrap'>
+                            <span className='nameWrap'>
+                                <TextField
+                                    id="outlined-basic"
+                                    label="Name"
+                                    name="guestName"
+                                    value={guestName}
+                                    variant="outlined"
+                                    placeholder='Full name'
+                                    sx={{ width: '100%' }}
+                                    onChange={(event) => handleChange(event)}
+                                    error={tucGuestName && !!errGuestName}
+                                    helperText={tucGuestName ? errGuestName : undefined}
+                                />
+                            </span>
+                            <span className='emailWrap'>
+                                <TextField
+                                    id="outlined-basic"
+                                    label="Email"
+                                    name="email"
+                                    vlaue={email}
+                                    variant="outlined"
+                                    placeholder='Email address'
+                                    sx={{ width: '100%' }}
+                                    onChange={(event) => handleChange(event)}
+                                    error={tucEmail && !!errEmail}
+                                    helperText={tucEmail ? errEmail : undefined}
+                                />
+                            </span>
+                        </div>
+                        <div className='textAreaWrap'>
                             <TextField
-                                id="outlined-basic"
-                                label="Name"
-                                name="guestName"
-                                value={guestName}
-                                variant="outlined"
-                                placeholder='Full name'
-                                sx={{ width: '100%' }}
+                                multiline
+                                placeholder='Your Message'
+                                maxRows={4}
+                                name="message"
+                                value={message}
+                                sx={{
+                                    width: '100%',
+                                    borderRadius: '1rem'
+                                }}
                                 onChange={(event) => handleChange(event)}
-                                error={tucGuestName && !!errGuestName}
-                                helperText={tucGuestName ? errGuestName : undefined}
+                                error={tucMessage && !!errMessage}
+                                helperText={tucMessage ? errMessage : undefined}
                             />
-                        </span>
-                        <span className='emailWrap'>
-                            <TextField
-                                id="outlined-basic"
-                                label="Email"
-                                name="email"
-                                vlaue={email}
-                                variant="outlined"
-                                placeholder='Email address'
-                                sx={{ width: '100%' }}
-                                onChange={(event) => handleChange(event)}
-                                error={tucEmail && !!errEmail}
-                                helperText={tucEmail ? errEmail : undefined}
-                            />
-                        </span>
+                        </div>
                     </div>
-                    <div className='textAreaWrap'>
-                        <TextField
-                            multiline
-                            placeholder='Your Message'
-                            rows={4}
-                            maxRows={4}
-                            name="message"
-                            value={message}
+                    <div className='buttonWrap'>
+                        <Button
+                            type="submit"
+                            variant='contained'
                             sx={{
-                                width: '100%',
-                                borderRadius: '1rem'
+                                textTransfomr: 'none',
+                                borderRadius: '4rem'
                             }}
-                            onChange={(event) => handleChange(event)}
-                            error={tucMessage && !!errMessage}
-                            helperText={tucMessage ? errMessage : undefined}
-                        />
+                        >
+                            Send Message
+                        </Button>
                     </div>
-                </div>
-                <div className='buttonWrap'>
-                    <Button
-                        type="submit"
-                        variant='contained'
-                        sx={{
-                            textTransfomr: 'none',
-                            borderRadius: '4rem'
-                        }}
-                    >
-                        Send Message
-                    </Button>
-                </div>
-            </form>
-        </div>
+                </form>
+            </div>
+        </StyledContactPage>
     )
 }
 export default ContactPage;

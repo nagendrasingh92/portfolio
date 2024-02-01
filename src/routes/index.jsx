@@ -10,25 +10,51 @@ import PortfolioPage from '../pages/PortfolioPage';
 import SigninPage from "../pages/SigninPage";
 import SignupPage from '../pages/SignupPage';
 import AdminPortal from "../pages/AdminPortal";
-import { isLogin } from "../utils/validations/authValidation";
-console.log('isLogin', !isLogin());
+import ErrorPage from "../pages/404";
+import TodoList from "../pages/TodoList";
+import ProtectedRoute from "./middleware/ProtectedRoute";
+import PublicRoute from "./middleware/PublicRoute";
 const routes = createBrowserRouter([
     {
+        path: '*',
+        element: <ErrorPage />
+    },
+    {
         path: ROUTE_PATH.SIGNUP,
-        element: <PublicLayout><SignupPage /></PublicLayout>
+        element: (
+            <PublicRoute>
+                <PublicLayout>
+                    <SignupPage />
+                </PublicLayout>
+            </PublicRoute>
+        )
     },
     {
         path: ROUTE_PATH.SIGIN,
-        element: <PublicLayout>{!isLogin() ? <SigninPage /> : <PortfolioPage />}</PublicLayout>
+        element: (
+            <PublicRoute>
+                <PublicLayout>
+                    <SigninPage />
+                </PublicLayout>
+            </PublicRoute>
+        )
     },
     {
         path: ROUTE_PATH.ADMINPORTAL,
-        element: <PublicLayout><AdminPortal /></PublicLayout>
+        element: (
+            <ProtectedRoute>
+                <PublicLayout>
+                    <AdminPortal />
+                </PublicLayout>
+            </ProtectedRoute>
+        )
     },
 
     {
         path: ROUTE_PATH.HOME,
-        element: <PublicLayout><Home /></PublicLayout>
+        element: <PublicLayout>
+
+            <Home /></PublicLayout>
     },
     {
         path: ROUTE_PATH.TODO,
@@ -36,8 +62,11 @@ const routes = createBrowserRouter([
     },
     {
         path: ROUTE_PATH.ABOUT,
-        element: <PublicLayout><AboutPage /></PublicLayout>
-
+        element: (
+            <PublicLayout>
+                <AboutPage />
+            </PublicLayout>
+        )
     },
     {
         path: ROUTE_PATH.RESUME,
@@ -45,14 +74,30 @@ const routes = createBrowserRouter([
 
     },
     {
-        path: ROUTE_PATH.CONTACT,
-        element: <PublicLayout><ContactPage /></PublicLayout>
 
+        path: ROUTE_PATH.CONTACT,
+        element: (
+            <ProtectedRoute>
+                <PublicLayout>
+                    <ContactPage />
+                </PublicLayout>
+            </ProtectedRoute>
+        )
     },
     {
         path: ROUTE_PATH.PORTFOLIO,
         element: <PublicLayout><PortfolioPage /></PublicLayout>
 
+    },
+    {
+        path: ROUTE_PATH.TODOLIST,
+        element: (
+            <ProtectedRoute>
+                <PublicLayout>
+                    <TodoList />
+                </PublicLayout>
+            </ProtectedRoute>
+        )
     },
 ])
 

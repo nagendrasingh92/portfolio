@@ -1,45 +1,71 @@
 import { createTheme } from '@mui/material/styles';
+import { useSelector } from 'react-redux';
+const generatePalette = (themeMode) => {
+  switch (themeMode) {
+    case 'dark':
+      return {
+        palette: {
+          customColor: {
+            primary: {
+              main: '#3f51b5',
+              light: '#6573C3',
+              dark: '#2C387E',
+              contrastText: '#fff',
+            },
+            secondary: {
+              main: '#f50057',
+              light: '#f73378',
+              dark: '#AB003C',
+            },
+            background: {
+              default: '#303030',
+              paper: '#090808',
+            },
+            Error: {
+              main: '#f44336',
+              light: '#e57373',
+              dark: '#d32f2f',
+            },
+            text: {
+              main: '#FFFFFF',
+              light: '#d3c8c8',
+              dark: '#000000',
+            }
+          },
+        },
+      };
+    case 'default':
+      return {
+        palette: {
+          customColor: {
+            primary: {
+              main: '#FFFFFF',
+              light: '#CCCCCC',
+              dark: '#FFFFFF',
+            },
+            secondary: {
+              main: '#DDDDDD',
+              light: '#AAAAAA',
+              dark: 'DDDDDD',
+            },
+            background: {
+              default: '#f2f4f7',
+              paper: '#FFFFFF',
+            },
+            text: {
+              main: '#000000',
+              light: '#d3c8c8'
+            }
+          },
+        },
+      };
+  }
+};
 
-export const theme = createTheme({
-  palette: {
-    primary: {
-      main: '#283955',
-    },
-    secondary: {
-      main: '#CDA14B',
-    },
-    customColor: {
-      primarySecond: '#F0EFE9',
-      secondarySecond: '#FCF6EA',
-      main: '#2B2724',
-      greyFirst: '#999999',
-      greySecond: '#E2E2E2',
-      greyThird: '#FDFDFD',
-      otherFirst: '#DE350B',
-      otherSecond: '#F4F6FA'
-    },
-    lightTheme: {
-      bdBody: 'rgb(227, 244, 244)',
-      bdSideBarPrimary: 'rgb(32 32 34)',
-      bdSideBarSecondary: 'rgb(30 30 31)',
-      colorTextPrimary: 'rgb(255 255 255)',
-      colorTextSecondary: 'reb(250 250 250)',
-      colorTextTertiary: 'rgb(214 214 214 / 70%)',
-      highLightTextPrimary: 'rgb(255 219 112)',
-      highLightTextSecondary: 'rgb(206 177 90)',
-    },
-    DarkTheme:{
-      bdBody: 'rgb(18 18 18)',
-      bdSideBarPrimary: 'rgb(32 32 34)',
-      bdSideBarSecondary: 'rgb(30 30 31)',
-      colorTextPrimary: 'rgb(255 255 255)',
-      colorTextSecondary: 'reb(250 250 250)',
-      colorTextTertiary: 'rgb(214 214 214 / 70%)',
-      highLightTextPrimary: 'rgb(255 219 112)',
-      highLightTextSecondary: 'rgb(206 177 90)',
-    },
-    boxShadow: {
-      main: '0px 7px 10px rgba(40, 41, 61, 0.08)',
-    },
-  },
-});
+export const ThemeProviderComponent = () => {
+  const themeMode = useSelector((state) => state.themeMode.mode);
+  console.log('themeMode', themeMode)
+  const palette = generatePalette(themeMode);
+  console.log('palette', palette)
+  return createTheme({ ...palette });
+}

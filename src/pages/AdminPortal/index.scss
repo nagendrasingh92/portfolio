@@ -1,58 +1,71 @@
-.adminPortalWrap{
+.adminPortalWrap {
     text-align: left;
     padding: 2rem 1.7rem;
-    .titleWrap{
+
+    .titleWrap {
         font-weight: 800;
         font-size: 1.8rem;
         margin-bottom: 3rem;
-        .horizontalLine{
+
+        .horizontalLine {
             padding-bottom: 0.7rem;
             border-bottom: 0.2rem solid grey;
         }
     }
-    .adminPortalContentWrap{
+
+    .adminPortalContentWrap {
         border: 1px solid red;
         padding: 0.5rem;
         border-radius: 1rem;
-        .addUserButtonWrap{
+
+        .addUserButtonWrap {
             text-align: right;
-            margin:1rem 2rem 0rem 0rem; 
+            margin: 1rem 2rem 0rem 0rem;
         }
-        .searchBoxWrap{
+
+        .searchBoxWrap {
             margin: 2rem 4rem;
         }
-        .userCardsWrap{
+
+        .userCardsWrap {
             display: flex;
             flex-wrap: wrap;
             gap: 2rem;
             justify-content: center;
             text-align: center;
-            .userCardWrap{
+
+            .userCardWrap {
                 flex: 0 1 27%;
                 border: 1px solid red;
                 // aspect-ratio: 1;
                 overflow: hidden;
                 border-radius: 0.8rem;
-                .topButtonWrap{
+
+                .topButtonWrap {
                     display: flex;
                     justify-content: space-between;
-                    background:#007aff ;
-                    .previewIconWrap{
+                    background: #007aff;
+
+                    .previewIconWrap {
                         margin: 0.3rem
                     }
                 }
-                .userImageWrap{
+
+                .userImageWrap {
                     width: 100%;
-                    img{
+
+                    img {
                         width: 100%;
                         height: 10rem;
                     }
                 }
-                .userDatilsWrap{
+
+                .userDatilsWrap {
                     text-align: left;
                     padding: 1rem;
                 }
-                .editButtonWrap{
+
+                .editButtonWrap {
                     background-color: rgb(29, 150, 29);
                 }
             }

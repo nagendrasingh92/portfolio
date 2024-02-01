@@ -54,15 +54,28 @@ const validationContactSchema = yup.object({
         .email('Invalid email address')
         .required('Email is required'),
 })
+const validationTaskFormSchema = yup.object({
+	taskTitle: yup
+		.string()
+		.required('Name is required'),
+	taskDescription: yup
+		.string()
+		.required('Name is required'),
+	startDate: yup
+		.date()
+		.min(new Date(), 'Start date must be in the future'),
+	endDate: yup
+		.date()
+		.min(
+			yup.ref('startDate'),
+			"end date can't be before start date"
+		),
+})
 
 
-const isLogin = () => {
-    if(localStorage.getItem('auth')) return true;
-    return false;
-}
 
 export {
-    isLogin,
+    validationTaskFormSchema,
     validationContactSchema,
     validationSignInSchema,
     validationSignUpSchema

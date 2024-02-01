@@ -1,34 +1,40 @@
-.contactPageWrap{
+.contactPageWrap {
     text-align: left;
     padding: 2rem 1.7rem;
-    .titleWrap{
+
+    .titleWrap {
         font-weight: 800;
         font-size: 1.8rem;
         margin-bottom: 3rem;
-        .horizontalLine{
+
+        .horizontalLine {
             padding-bottom: 0.7rem;
             border-bottom: 0.2rem solid grey;
         }
     }
-   
-    .contactFormWrap{
-        .inputFiledWrap{
+
+    .contactFormWrap {
+        .inputFiledWrap {
             width: 100%;
             display: flex;
             gap: 1rem;
             margin-bottom: 4rem;
-            .nameWrap{
+
+            .nameWrap {
                 width: 100%;
             }
-            .emailWrap{
+
+            .emailWrap {
                 width: 100%;
             }
         }
-        .textAreaWrap{
+
+        .textAreaWrap {
             margin-bottom: 1.5rem;
         }
     }
-    .buttonWrap{
+
+    .buttonWrap {
         text-align: right;
     }
 }

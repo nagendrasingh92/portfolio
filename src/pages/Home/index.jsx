@@ -1,8 +1,12 @@
+import StyledHome from "./StyledHome";
+
 const Home = () => {
     return (
-        <div>
-            Home
-        </div>
+        <StyledHome>
+            <div className="homePageWrap">
+                Home
+            </div>
+        </StyledHome>
     )
 }
 

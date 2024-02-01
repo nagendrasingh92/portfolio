@@ -1,6 +1,5 @@
 import bootstrapIcon from '../assets/svg/bootstrapIcon.svg';
 import cssIcon from '../assets/svg/cssIcon.svg';
-import gitHubIcon from '../assets/svg/gitHubIcon.svg';
 import gitIcon from '../assets/svg/gitIcon.svg';
 import htmlIcon from '../assets/svg/htmlIcon.svg';
 import jsIcon from '../assets/svg/jsIcon.svg';
@@ -19,7 +18,6 @@ const iconData = [
     jsIcon,
     sassIcon,
     bootstrapIcon,
-    gitHubIcon,
     gitIcon,
     reactIcon,
 ]
@@ -75,7 +73,7 @@ const userProfileData = [
     },
 
 ]
-const publicLayoutNavBarData = [
+const headerNavBarData = [
     'About', 'Resume', 'Portfolio', 'Contact',
 ]
 
@@ -106,7 +104,7 @@ const portfolioData = [
         title: 'Number Game'
     },
     {
-        name: '',
+        name: 'todoList',
         icon: underConstruction,
         title: 'Todo List'
     },
@@ -126,5 +124,5 @@ export {
     portfolioData,
     userProfileData,
     iconData,
-    publicLayoutNavBarData,
+    headerNavBarData,
 }
