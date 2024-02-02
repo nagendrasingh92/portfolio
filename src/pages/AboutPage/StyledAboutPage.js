@@ -39,11 +39,89 @@ const StyledAboutPageWrapper = styled('div')(
         margin-bottom: 1rem;
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: space-evenly;
         transition: transform 0.3s ease;
-  
+        flex-direction: column;
+
         &:hover {
           transform: scale(1.05);
+        }
+
+        .cardImageWrap{
+          height: 70%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .iconTitleWrap{
+          font-size: 1.6rem;
+          
+        }
+      }
+    }
+    @media screen and (max-width: 1200px){
+
+      .cardsWrap {
+
+        .cardWrap {
+
+          .cardImageWrap{
+
+            img{
+              height: 70%;
+            }
+          }
+  
+          .iconTitleWrap{
+            font-size: 1.3rem;
+            
+          }
+        }
+      }
+    }
+    @media screen and (max-width: 1000px){
+
+      .cardsWrap {
+
+        .cardWrap {
+          flex: 0 1 calc(28% - 1rem);
+          .cardImageWrap{
+            img{
+              height: 70%;
+            }
+            svg{
+              height: 70%;
+            }
+          }
+  
+          .iconTitleWrap{
+            font-size: 1.3rem;
+            
+          }
+        }
+      }
+    }
+
+    @media screen and (max-width: 700px){
+
+      .cardsWrap {
+
+        .cardWrap {
+          flex: 0 1 calc(40% - 1rem);
+          .cardImageWrap{
+            img{
+              height: 70%;
+            }
+            svg{
+              height: 70%;
+            }
+          }
+  
+          .iconTitleWrap{
+            font-size: 1.3rem;
+            
+          }
         }
       }
     }

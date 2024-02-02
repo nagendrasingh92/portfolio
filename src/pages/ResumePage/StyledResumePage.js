@@ -29,7 +29,8 @@ const StyledResumePage = styled('div')(
                 z-index: 1;
     
                 .iconWrap {
-                    border: 1px solid red;
+                    border: 1px solid black;
+                    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
                     padding: 0.6rem;
                     display: inline-flex;
                     align-items: center;
@@ -61,10 +62,10 @@ const StyledResumePage = styled('div')(
                     width: 1rem;
                     height: 1rem;
                     background: black;
-                    border: 1px solid red;
                     border-radius: 50%;
+                    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+                    border: 1px solid white;
                 }
-    
                 .durationWrap {
                     font-weight: 600;
                     font-size: 1.1rem;
@@ -74,10 +75,10 @@ const StyledResumePage = styled('div')(
                     content: "";
                     position: absolute;
                     top: -1.1rem;
-                    left: -3rem;
+                    left: -3.03rem;
                     width: 0.1rem;
-                    height: 6rem;
-                    background: black;
+                    height: 6.8rem;
+                    background: ${theme.palette.customColor.text.main};
                 }
             }
         }

@@ -32,9 +32,12 @@ const AboutPage = () => {
                         {
                             iconData.map((item, index) => (
                                 <div key={index} className='cardWrap'>
-                                    <span className='cardImageWrap'>
-                                        <img src={item} alt={item} />
-                                    </span>
+                                    <div className='cardImageWrap'>
+                                        <img src={item.icon} alt={item.title} />
+                                    </div>
+                                    <div className='iconTitleWrap'>
+                                        {item.title}
+                                    </div>
                                 </div>
                             ))
                         }
@@ -42,6 +45,9 @@ const AboutPage = () => {
                             <span className='cardImageWrap'>
                                 <GitHubIconComp color={themeMode === 'default' ? 'black' : 'white'} />
                             </span>
+                            <div className='iconTitleWrap'>
+                                Git Hub
+                            </div>
                         </div>
                     </div>
                 </div>

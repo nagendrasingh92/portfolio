@@ -1,6 +1,5 @@
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
-import './index.scss';
 import { Button } from '@mui/material';
 import StyledResumePage from './StyledResumePage';
 const ResumePage = () => {

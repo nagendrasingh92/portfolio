@@ -7,15 +7,17 @@ import EditIcon from '@mui/icons-material/Edit';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-// import {userProfileData} from '../../constants/data';
 import { deleteUser } from '../../store/reducers/adminPortal/adminPortalSlice';
 import StyledAdminPortal from './StyledAdminPortal';
+import { auth } from '../../firebase-config';
+
 const AdminPortal = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const userData = useSelector((state) => state.userData.userData);
     const [filterData, setFilterData] = useState(userData);
     const [searchData, setSearchData] = useState('')
+    console.log('auth', auth)
     const handleDelete = (index) => {
         const adminUserDataTemp = userData.filter((item, indexTemp) => index !== indexTemp)
         dispatch(deleteUser(adminUserDataTemp));

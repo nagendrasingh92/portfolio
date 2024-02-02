@@ -39,6 +39,19 @@ const StyledSigninPage = styled('div')(
             .signinFormContent {
                 .inputFieldWrap {
                     margin-bottom: 2rem;
+                    .MuiOutlinedInput-root {
+                        background-color: white;
+                    }
+            
+                    .MuiInputLabel-root {
+                        color: ${theme.palette.customColor.text.dark} !important;
+                    }
+            
+                    .MuiOutlinedInput-input {
+                        &::placeholder {
+                            color: ${theme.palette.customColor.text.dark};
+                        }
+                    }
                 }
             }
         }

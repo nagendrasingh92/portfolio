@@ -54,7 +54,8 @@ const StyledHeader = styled('div')(
           display: flex;
           align-items: center;
           justify-content: center;
-      
+          cursor: pointer;
+          
           img {
             height: 4rem;
             border-radius: 50%;

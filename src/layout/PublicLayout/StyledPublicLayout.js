@@ -16,6 +16,11 @@ const StyledPublicLayout = styled('div')(
                 position: absolute;
                 right: 1rem;
                 top: 1rem;
+                cursor: pointer;
+
+                svg{
+                    color: ${theme.palette.customColor.text.main};
+                }
             }
         }
     }

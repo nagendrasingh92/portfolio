@@ -168,8 +168,8 @@ const SigninPage = () => {
                     </form>
                     <div className='hintWrap'>
                         Only admin can check admin portal <br />
-                        for Admin UserName:- admin123, password:- 123456789<br />
-                        for guest userName:- guest123, passwrod:- 123456789
+                        for Admin UserName:- mailto:admin@gmail.com, password:- admin123<br />
+                        for guest userName:- mailto:guest@gmail.com, passwrod:- guest123
                     </div>
                 </div>
             </div>

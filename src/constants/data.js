@@ -10,16 +10,17 @@ import signInImage from '../assets/images/signIn.png';
 import signUpImage from '../assets/images/signUp.png';
 import adminPortalImage from '../assets/images/adminPortal.png';
 import underConstruction from '../assets/images/underConstruction.jpg';
-
+import materialUi from '../assets/svg/materialUi.svg';
 const iconData = [
-    vsCodeIcon,
-    htmlIcon,
-    cssIcon,
-    jsIcon,
-    sassIcon,
-    bootstrapIcon,
-    gitIcon,
-    reactIcon,
+    { icon: htmlIcon, title: 'HTML' },
+    { icon: cssIcon, title: 'CSS' },
+    { icon: jsIcon, title: 'Java Script' },
+    { icon: vsCodeIcon, title: 'VS Code' },
+    { icon: sassIcon, title: 'SASS' },
+    { icon: gitIcon, title: 'GIT' },
+    { icon: reactIcon, title: 'React' },
+    { icon: bootstrapIcon, title: 'BootStrap' },
+    { icon: materialUi, title: 'Material UI' },
 ]
 const userProfileData = [
     {
