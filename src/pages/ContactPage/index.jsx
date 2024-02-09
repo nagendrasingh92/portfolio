@@ -2,18 +2,11 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import { useFormik } from 'formik';
 import { validationContactSchema } from '../../utils/validations/authValidation';
-import { doc, setDoc } from '@firebase/firestore';
-import { db } from '../../firebase-config';
 import StyledContactPage from './StyledContactPage';
 const ContactPage = () => {
     const submitHandler = async (values) => {
         values.preventDefault();
         const { guestName, email, message } = values;
-        await setDoc(doc(db, "cities", "LA"), {
-            name: "Los Angles",
-            state: "CA",
-            country: "USA"
-        });
         const res = fetch(
             `${process.env.REACT_APP_FIREBASE}/userData.json`,
             {

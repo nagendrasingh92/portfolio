@@ -14,7 +14,8 @@ import { auth } from '../../firebase-config';
 const AdminPortal = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const userData = useSelector((state) => state.userData.userData);
+    const userData = useSelector((state) => <>{console.log('state', state)} </>);
+
     const [filterData, setFilterData] = useState(userData);
     const [searchData, setSearchData] = useState('')
     console.log('auth', auth)

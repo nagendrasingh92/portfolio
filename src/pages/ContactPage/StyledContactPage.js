@@ -6,7 +6,7 @@ const StyledContactPage = styled('div')(
         text-align: left;
         padding: 2rem 1.7rem;
         color: ${theme.palette.customColor.text.main};
-
+        min-height: 35rem;
         
         .MuiOutlinedInput-root {
             background-color: white;
@@ -25,7 +25,7 @@ const StyledContactPage = styled('div')(
         .titleWrap{
             font-weight: 800;
             font-size: 1.8rem;
-            margin-bottom: 3rem;
+            margin-bottom: 6rem;
 
             .horizontalLine{
                 padding-bottom: 0.7rem;

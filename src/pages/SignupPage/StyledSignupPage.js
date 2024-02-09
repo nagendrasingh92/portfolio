@@ -19,7 +19,7 @@ const StyledSignupPage = styled('div')(
         }
 
         .signupPageContentWrap {
-            border: 1px solid red;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
             border-radius: 0.7rem;
             margin: 4rem;
             padding: 2rem 5rem;

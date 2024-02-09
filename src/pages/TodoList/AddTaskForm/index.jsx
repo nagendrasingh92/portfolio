@@ -69,33 +69,38 @@ const AddTaskForm = (props) => {
     }
 
     return (
-        <StyledAddTaskForm>
-            <Dialog
-                open={open}
-                onClose={handleClose}
-                PaperProps={{
-                    style: {
-                        maxWidth: '900px',
-                        width: '900px',
-                        margin: 'auto',
-                    }
-                }}
-            >
-                <form className='formWrap' onSubmit={(e) => handleSubmit(e)} autoComplete="off">
+        <Dialog
+            open={open}
+            onClose={handleClose}
+            PaperProps={{
+                style: {
+                    maxWidth: '900px',
+                    width: '900px',
+                    margin: 'auto',
+                }
+            }}
+        >
+            <StyledAddTaskForm>
+
+                <form className='addTaskFormWrap' onSubmit={(e) => handleSubmit(e)} autoComplete="off">
                     <div className='titleWrap'>
                         Add Task
                     </div>
                     <div className='taskTitleWrap'>
                         <TextField
+                            fullWidth
                             name="taskTitle"
                             value={taskTitle}
                             onChange={handleChange}
-                            placeholder="Enter task"
+                            placeholder="Enter task title"
                             error={tucTaskTitle && !!errTaskTitle}
                             helperText={tucTaskTitle && errTaskTitle}
                         />
                     </div>
                     <div className='startDateWrap'>
+                        <div className='dateTitleWrap'>
+                            Start Date
+                        </div>
                         <LocalizationProvider dateAdapter={AdapterDayjs}>
                             <DatePicker
                                 name="startDate"
@@ -110,6 +115,9 @@ const AddTaskForm = (props) => {
                         </LocalizationProvider>
                     </div>
                     <div className='endDateWrap'>
+                        <div className='dateTitleWrap'>
+                            End Date
+                        </div>
                         <LocalizationProvider dateAdapter={AdapterDayjs}>
                             <DatePicker
                                 name="endDate"
@@ -125,10 +133,14 @@ const AddTaskForm = (props) => {
                     </div>
                     <div className='taskDescriptionWrap'>
                         <TextField
+                            sx={{ width: '100%' }}
+                            id="outlined-multiline-static"
                             name="taskDescription"
+                            multiline
+                            rows={4}
+                            placeholder="Enter task details"
                             value={taskDescription}
                             onChange={handleChange}
-                            placeholder="Enter task details"
                             error={tucTaskDescription && !!errTaskDescription}
                             helperText={tucTaskDescription && errTaskDescription}
                         />
@@ -141,8 +153,8 @@ const AddTaskForm = (props) => {
                         </Button>
                     </div>
                 </form>
-            </Dialog>
-        </StyledAddTaskForm>
+            </StyledAddTaskForm>
+        </Dialog>
     )
 }
 

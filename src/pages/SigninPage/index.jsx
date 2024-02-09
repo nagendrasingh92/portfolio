@@ -11,7 +11,6 @@ import KeyboardIcon from '@mui/icons-material/Keyboard';
 import { validationSignInSchema } from '../../utils/validations/authValidation';
 import { signInWithEmailAndPassword } from '@firebase/auth';
 import { auth } from '../../firebase-config';
-import './index.scss';
 import StyledSigninPage from './StyledSigninPage';
 
 const SigninPage = () => {
@@ -168,8 +167,8 @@ const SigninPage = () => {
                     </form>
                     <div className='hintWrap'>
                         Only admin can check admin portal <br />
-                        for Admin UserName:- mailto:admin@gmail.com, password:- admin123<br />
-                        for guest userName:- mailto:guest@gmail.com, passwrod:- guest123
+                        for Admin UserName:- admin@gmail.com, password:- admin123<br />
+                        for guest userName:- guest@gmail.com, passwrod:- guest123
                     </div>
                 </div>
             </div>

@@ -19,7 +19,6 @@ const StyledAdminPortal = styled('div')(
         }
 
         .adminPortalContentWrap{
-            border: 1px solid red;
             padding: 0.5rem;
             border-radius: 1rem;
 
@@ -41,7 +40,7 @@ const StyledAdminPortal = styled('div')(
 
                 .userCardWrap{
                     flex: 0 1 27%;
-                    border: 1px solid red;
+                    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
                     // aspect-ratio: 1;
                     overflow: hidden;
                     border-radius: 0.8rem;
